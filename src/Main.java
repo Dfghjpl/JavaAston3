@@ -56,4 +56,25 @@ void main() {
     }catch (Exception e){
         System.out.println("\nОшибка"+e.getMessage());
     }
+
+    Pizza pizza3=new Pizza.Bilder(Pizza.Size.MEDIUM)
+            .chesse()
+            .tomato()
+            .bild();
+    OrderValidator validator1=new PizzaValidator();
+    validator1.setNext(new IngredientsValidator())
+            .setNext(new SizeValidator());
+    OrderService service1=new OrderService(validator1);
+    try{
+        Order order6 = service.createOrder(pizza3, new RegularPricing());
+        DeliveryService myDelivery=new PizzaDelivery();
+        myDelivery.deliver(order);
+
+        YandexDeliveryAPI yandexDeliveryAPI= new YandexDeliveryAPI();
+        DeliveryService yandexDelivery=new YandexDeliveryAdapter(yandexDeliveryAPI);
+        yandexDelivery.deliver(order);
+
+    } catch (Exception e) {
+        System.out.println("Ошибка: "+ e.getMessage());
+    }
 }
