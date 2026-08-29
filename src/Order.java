@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
     private final List<Pizza> pizzas;
@@ -57,6 +58,21 @@ public class Order {
 
     @Override
     public String toString() {
-        return String.format("Заказ: Клиент: %s, пиццы: %s, оплата:%s, сумма: %s ", customerName,pizzas.toString(),pricingStrategy.getStrategyName(), getFormattedPrice() );
+        return String.format("Заказ: Клиент: %s, \nпиццы: %s, \nоплата:%s, сумма: %s ", customerName,pizzas.toString(),pricingStrategy.getStrategyName(), getFormattedPrice() );
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this==obj) return true;
+        if ((obj==null)||(getClass()!=obj.getClass())) return false;
+        Order order=(Order) obj;
+        return Objects.equals(pizzas,order.pizzas)&&
+                Objects.equals(pricingStrategy,order.pricingStrategy)&&
+                Objects.equals(customerName,order.customerName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pizzas,pricingStrategy,customerName);
     }
 }

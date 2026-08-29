@@ -32,4 +32,14 @@ void main() {
     }catch (ValidationException e){
         System.out.println("Ошибка: "+e.getMessage());
     }
+
+    Order orderWithGift= new GiftWrapDecorator(order1);
+    System.out.println(order.toString());
+    System.out.println(orderWithGift.toString()+"\nИтого "+orderWithGift.getFormattedPrice());
+
+    Order orderWithDelivery = new ExpressDeliveryDecorator(orderWithGift);
+    System.out.println(orderWithDelivery.toString()+"\nИтого "+ orderWithDelivery.getFormattedPrice());
+
+    Order orderWithDrink=new DrinkDecorator(orderWithDelivery);
+    System.out.println(orderWithDrink.toString()+"\nИтого "+orderWithDrink.getFormattedPrice());
 }
