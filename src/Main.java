@@ -22,6 +22,7 @@ void main() {
             .setNext(new SizeValidator());
     OrderService orderService=new OrderService(validator);
 
+
     try{
         Pizza pizza2=new Pizza.Bilder(Pizza.Size.LARGE)
                 .olives()
@@ -42,4 +43,17 @@ void main() {
 
     Order orderWithDrink=new DrinkDecorator(orderWithDelivery);
     System.out.println(orderWithDrink.toString()+"\nИтого "+orderWithDrink.getFormattedPrice());
+
+    OrderService service= new LoggingProxy(validator,orderService);
+
+    Pizza pizza2=new Pizza.Bilder(Pizza.Size.LARGE)
+            .bacon()
+            .pineapple()
+            .tomato()
+            .bild();
+    try {
+        service.createOrder(pizza2,new RegularPricing());
+    }catch (Exception e){
+        System.out.println("\nОшибка"+e.getMessage());
+    }
 }
