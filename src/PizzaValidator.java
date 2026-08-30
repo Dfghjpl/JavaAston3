@@ -1,4 +1,4 @@
-public class PizzaValidator extends OrderValidator{
+public class PizzaValidator extends OrderValidator {
     @Override
     public void validate(Order order) throws ValidationException {
         if (order.getPizzaCount() == 0) {

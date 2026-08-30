@@ -115,20 +115,20 @@ public class Pizza {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if ((obj == null)||(getClass() != obj.getClass())) return false;
+        if ((obj == null) || (getClass() != obj.getClass())) return false;
 
-        Pizza pizza=(Pizza) obj;
-        return size==pizza.size&&
-                cheese==pizza.cheese&&
-                bacon==pizza.bacon&&
-                onions==pizza.onions&&
-                pineapple==pizza.pineapple&&
-                olives==pizza.olives&&
-                tomato==pizza.tomato;
+        Pizza pizza = (Pizza) obj;
+        return size == pizza.size &&
+                cheese == pizza.cheese &&
+                bacon == pizza.bacon &&
+                onions == pizza.onions &&
+                pineapple == pizza.pineapple &&
+                olives == pizza.olives &&
+                tomato == pizza.tomato;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(size,cheese,bacon,onions,pineapple,olives,tomato);
+        return Objects.hash(size, cheese, bacon, onions, pineapple, olives, tomato);
     }
 }

@@ -1,4 +1,4 @@
-public class IngredientsValidator extends OrderValidator{
+public class IngredientsValidator extends OrderValidator {
     private static final int MAX_INGREDIENTS = 5;
 
     @Override

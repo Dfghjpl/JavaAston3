@@ -6,8 +6,8 @@ import java.util.zip.DataFormatException;
 public class LoggingProxy extends OrderServiceProxy {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
-    public LoggingProxy(OrderValidator validatorChain, OrderService realOrderService) {
-        super(validatorChain, realOrderService);
+    public LoggingProxy( OrderService realOrderService) {
+        super( realOrderService);
     }
 
     @Override

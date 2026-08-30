@@ -1,4 +1,4 @@
-public class SizeValidator extends OrderValidator{
+public class SizeValidator extends OrderValidator {
 
     @Override
     public void validate(Order order) throws ValidationException {
@@ -16,6 +16,7 @@ public class SizeValidator extends OrderValidator{
         // Передаем дальше по цепочке
         validateNext(order);
     }
+
     private int countIngredients(Pizza pizza) {
         int count = 0;
         if (pizza.getChesse()) count++;

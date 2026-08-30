@@ -8,16 +8,18 @@ public class Order {
     private final String customerName;
 
 
-    public Order(Pizza pizza, PricingStrategy pricingStrategy){
-        this(List.of(pizza),pricingStrategy,"Неизвестный");
+    public Order(Pizza pizza, PricingStrategy pricingStrategy) {
+        this(List.of(pizza), pricingStrategy, "Неизвестный");
     }
-    public Order(List<Pizza> pizzas,PricingStrategy pricingStrategy){
-        this(pizzas,pricingStrategy,"Неизвестный");
+
+    public Order(List<Pizza> pizzas, PricingStrategy pricingStrategy) {
+        this(pizzas, pricingStrategy, "Неизвестный");
     }
-    public Order(List<Pizza> pizzas, PricingStrategy pricingStrategy, String customerName){
-        this.pizzas=pizzas;
-        this.pricingStrategy=pricingStrategy;
-        this.customerName=customerName;
+
+    public Order(List<Pizza> pizzas, PricingStrategy pricingStrategy, String customerName) {
+        this.pizzas = pizzas;
+        this.pricingStrategy = pricingStrategy;
+        this.customerName = customerName;
     }
 
     public double getTotalPrice() {
@@ -27,9 +29,11 @@ public class Order {
         }
         return total;
     }
+
     public String getFormattedPrice() {
         return String.format("%.2f ₽", getTotalPrice());
     }
+
     public List<Pizza> getPizzas() {
         return new ArrayList<>(pizzas);
     }
@@ -41,9 +45,11 @@ public class Order {
     public String getCustomerName() {
         return customerName;
     }
+
     public int getPizzaCount() {
         return pizzas.size();
     }
+
     public Order addPizza(Pizza pizza) {
         List<Pizza> newPizzas = new ArrayList<>(pizzas);
         newPizzas.add(pizza);
@@ -58,21 +64,21 @@ public class Order {
 
     @Override
     public String toString() {
-        return String.format("Заказ: Клиент: %s, \nпиццы: %s, \nоплата:%s, сумма: %s ", customerName,pizzas.toString(),pricingStrategy.getStrategyName(), getFormattedPrice() );
+        return String.format("Заказ: Клиент: %s, \nпиццы: %s, \nоплата:%s, сумма: %s ", customerName, pizzas.toString(), pricingStrategy.getStrategyName(), getFormattedPrice());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this==obj) return true;
-        if ((obj==null)||(getClass()!=obj.getClass())) return false;
-        Order order=(Order) obj;
-        return Objects.equals(pizzas,order.pizzas)&&
-                Objects.equals(pricingStrategy,order.pricingStrategy)&&
-                Objects.equals(customerName,order.customerName);
+        if (this == obj) return true;
+        if ((obj == null) || (getClass() != obj.getClass())) return false;
+        Order order = (Order) obj;
+        return Objects.equals(pizzas, order.pizzas) &&
+                Objects.equals(pricingStrategy, order.pricingStrategy) &&
+                Objects.equals(customerName, order.customerName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pizzas,pricingStrategy,customerName);
+        return Objects.hash(pizzas, pricingStrategy, customerName);
     }
 }

@@ -1,7 +1,7 @@
 public interface PricingStrategy {
-    double calculate( Pizza pizza);
+    double calculate(Pizza pizza);
 
-    default  String getStrategyName(){
+    default String getStrategyName() {
         return this.getClass().getSimpleName();
     }
 }

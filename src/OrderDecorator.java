@@ -1,5 +1,6 @@
 public abstract class OrderDecorator extends Order {
     protected Order decoratedOrder;
+
     public OrderDecorator(Order decoratedOrder) {
         super(decoratedOrder.getPizzas(),
                 decoratedOrder.getPricingStrategy(),

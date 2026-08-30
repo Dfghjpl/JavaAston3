@@ -1,10 +1,11 @@
-public class BirthdayPricing extends RegularPricing{
+public class BirthdayPricing extends RegularPricing {
 
     private static final double PIZZA_DISCOUNT = 0.10;
+
     @Override
     public double calculate(Pizza pizza) {
-        double price=super.calculate(pizza);
-        price= price* (1-PIZZA_DISCOUNT);
+        double price = super.calculate(pizza);
+        price = price * (1 - PIZZA_DISCOUNT);
         return price;
     }
 
